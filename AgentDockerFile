@@ -1,4 +1,4 @@
-# builder будет использоваться для создания исполняемого файла сервера
+# builder будет использоваться для создания исполняемого файла агента
 FROM golang:alpine AS builder
 
 # WORKDIR - рабочая директория в контейнере
@@ -10,24 +10,20 @@ COPY go.mod go.sum ./
 # явно грузим зависимости
 RUN go mod download
 
-# копируем server code в контейнер в /wd
+# копируем agent code в контейнер в /wd
 COPY internal internal 
 COPY cmd/agent/*.go cmd/agent/
 
-# меняем рабочую директорию на папку с кодом сервера 
+# меняем рабочую директорию на папку с кодом агента 
 WORKDIR /wd/cmd/agent
-# создаём исполняемый файл agentura в /wd/cmd/server
+# создаём исполняемый файл agentura в /wd/cmd/agent
 RUN go build -o agentura
 
-# грузим чистый образ, в нём будет только исполняемый файл сервера
+# грузим чистый образ, в нём будет только исполняемый файл агента
 FROM alpine AS runner  
 
 # копируем сбилденный /wd/cmd/agent/agentura в корень / runner
 COPY --from=builder /wd/cmd/agent/agentura / 
-
-# открываем порт 
-# такой же как на сервере, в http.ListenAndServe
-EXPOSE 8080 
 
 # запускаем исполняемый файл servak
 CMD ["./agentura"] 
