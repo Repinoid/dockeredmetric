@@ -27,11 +27,11 @@
 ├─ AgentDockerFile
 └─ ServerDockerFile
 ```
-
+<hr>
 Далее
 
-**docker-compose build
-docker-compose up**
+**docker-compose build**<br>
+**docker-compose up**
 
 *curl localhost:8000
 и прочие курлы*
