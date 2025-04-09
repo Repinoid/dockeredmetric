@@ -1,4 +1,3 @@
-# dockeredmetric
 ## Dockered Сервис сбора метрик и алертинга <br>
 *Курс "Продвинутый Go-разработчик" Yandex Practicum*
 
