@@ -1,5 +1,5 @@
 # dockeredmetric
-Dockered Сервис сбора метрик и алертинга. Продвинутый Go-разработчик Yandex Practicum
+Dockered Сервис сбора метрик и алертинга. Курс "Продвинутый Go-разработчик" Yandex Practicum
 
 Не имел опыта работы с docker-compose, но, вроде бы, сделал файлы для Метрик
 
